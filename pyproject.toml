@@ -1,0 +1,89 @@
+[tool.poetry]
+name = "getrec-telegram-project"
+version = "0.1.0"
+description = ""
+authors = ["arkadiysotnikov <cotnikoarkady@gmail.com>"]
+readme = "README.md"
+packages = [{include = "getrec_telegram_project"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+beautifulsoup4 = "^4.12.2"
+html2text = "^2020.1.16"
+pyperclip = "^1.8.2"
+requests = "^2.31.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.4.0"
+mypy = "^1.5.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+line-length = 120
+target-version = ['py310']
+
+
+[tool.mypy]
+python_version = "3.10"
+warn_redundant_casts = "True"
+warn_unreachable = "True"
+disallow_untyped_defs = "True"
+ignore_missing_imports = "True"
+disable_error_code = "attr-defined"
+
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+fix = true
+select = [
+    # flake8-2020
+    "YTT",
+    # flake8-bandit
+    "S",
+    # flake8-bugbear
+    "B",
+    # flake8-builtins
+    "A",
+    # flake8-comprehensions
+    "C4",
+    # flake8-debugger
+    "T10",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+    # mccabe
+    "C90",
+    # pycodestyle
+    "E", "W",
+    # pyflakes
+    "F",
+    # pygrep-hooks
+    "PGH",
+    # pyupgrade
+    "UP",
+    # ruff
+    "RUF",
+    # tryceratops
+    "TRY",
+]
+ignore = [
+    # LineTooLong
+    "E501",
+    # DoNotAssignLambda
+    "E731",
+    # Do not perform function call `Depends` in argument defaults
+    "B008",
+    # Use specific rule codes when ignoring type issues
+    "PGH003"
+]
+
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
