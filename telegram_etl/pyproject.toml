@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "telegram-etl"
+version = "0.1.0"
+description = ""
+authors = ["arkadiysotnikov <cotnikoarkady@gmail.com>"]
+packages = [{include = "scrapping"}]
+
+[tool.poetry.dependencies]
+python = "~3.10"
+pandas = "^2.1.1"
+dagster = "^1.5.4"
+pyyaml = "^6.0.1"
+beautifulsoup4 = "^4.12.2"
+html2text = "^2020.1.16"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

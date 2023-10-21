@@ -8,11 +8,10 @@ packages = [{include = "getrec_telegram_project"}]
 
 [tool.poetry.dependencies]
 python = "3.10.*"
-beautifulsoup4 = "^4.12.2"
-html2text = "^2020.1.16"
-requests = "^2.31.0"
-pydantic = "^2.4.2"
 pandas = "^2.1.1"
+pillow = "^10.0.1"
+dagster = "^1.5.4"
+pydantic = "1.10.13"
 
 
 [tool.poetry.group.dev.dependencies]
