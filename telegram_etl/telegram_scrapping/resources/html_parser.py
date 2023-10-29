@@ -2,9 +2,7 @@ import re
 
 import html2text
 from bs4 import BeautifulSoup
-
-from scrapping.schema.telegram import TelegramPost
-from scrapping.telegram.file_loader import download_images
+from telegram_scrapping.schemas.telegram_post import TelegramPost
 
 
 class TelegramHTMLParser:
@@ -27,9 +25,8 @@ class TelegramHTMLParser:
         author = self.parse_author(html_of_post)
         date_time = self.parse_datetime(html_of_post)
         image_urls = self.parse_images(html_of_post)
-        image_paths = download_images(image_urls)
         post = TelegramPost(
-            content=content, author=author, posted_at=date_time, image_urls=image_urls, image_paths=image_paths
+            content=content, author=author, posted_at=date_time, image_urls=image_urls
         )
         return post
 
@@ -90,4 +87,3 @@ class TelegramHTMLParser:
             r"^[ \t]*[\\`]", "", text, flags=re.MULTILINE
         )  # Remove leading \ or `
         return text
-
