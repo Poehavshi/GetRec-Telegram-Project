@@ -3,7 +3,7 @@ from concurrent.futures import ProcessPoolExecutor
 
 import pandas as pd
 
-from telegram_etl.scrapping.telegram.scraper import TelegramScraper
+from scrapping.telegram.scraper import TelegramScraper
 
 logger = logging.getLogger(__name__)
 
@@ -30,8 +30,7 @@ def parse_one_post() -> None:
             }
         )
         df.to_csv("results.csv", mode="a", index=False, header=False)
-    # todo add download images to some storage
-    # todo add configuration for channels and message ids
+    # todo add configuration for channels, message ids and output
 
 
 if __name__ == "__main__":

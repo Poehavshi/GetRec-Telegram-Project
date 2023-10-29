@@ -3,8 +3,8 @@ import logging
 import requests
 from bs4 import BeautifulSoup
 
-from telegram_etl.scrapping.schema.telegram import TelegramPost
-from telegram_etl.scrapping.telegram.html_parser import TelegramHTMLParser
+from scrapping.schema.telegram import TelegramPost
+from scrapping.telegram.html_parser import TelegramHTMLParser
 
 logger = logging.getLogger(__name__)
 
