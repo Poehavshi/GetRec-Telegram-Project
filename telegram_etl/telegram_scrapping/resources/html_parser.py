@@ -25,8 +25,13 @@ class TelegramHTMLParser:
         author = self.parse_author(html_of_post)
         date_time = self.parse_datetime(html_of_post)
         image_urls = self.parse_images(html_of_post)
+        video_urls = self.parse_videos(html_of_post)
         post = TelegramPost(
-            content=content, author=author, posted_at=date_time, image_urls=image_urls
+            content=content,
+            author=author,
+            posted_at=date_time,
+            image_urls=image_urls,
+            video_urls=video_urls,
         )
         return post
 
@@ -79,6 +84,20 @@ class TelegramHTMLParser:
                 bg_image_url = match.group(1)
                 image_urls.append(bg_image_url)
         return image_urls
+
+    @staticmethod
+    def parse_videos(html_of_post: BeautifulSoup) -> list[str]:
+        videos_raw_urls = html_of_post.findAll(
+            "div", {"class": "tgme_widget_message_video_wrap"}
+        )
+        video_urls = []
+        if videos_raw_urls:
+            video_tags = html_of_post.find_all("video")
+            for video in video_tags:
+                src = video.get("src")
+                if src:
+                    video_urls.append(src)
+        return video_urls
 
     def _html_to_text(self, html_of_post: str) -> str:
         text = self.html_parser.handle(html_of_post)
